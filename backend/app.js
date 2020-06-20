@@ -9,9 +9,17 @@ app.use(express.json());
 //database connection
 mongoConnect();
 
+var userRoutes=require('./routes/users');
+var exerciseRoutes=require('./routes/exercise');
 
+app.get('/',(req,res)=>
+{
+    res.send('done');
+});
+app.use('/users',userRoutes);
+app.use('/exercise',exerciseRoutes);
 
 //server
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log('server started at '+port);
-})
+});
